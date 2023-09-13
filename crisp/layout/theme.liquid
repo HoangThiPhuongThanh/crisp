@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+  {{ content_for_header }}
+  {{ 'section-header.css' | asset_url | stylesheet_tag }}
+  {{ 'slideshow.css' | asset_url | stylesheet_tag }}
+  
+  {{ 'utilities.css' | asset_url | stylesheet_tag }}
+  {{ 'reponsive.css' | asset_url | stylesheet_tag }}
+  {% style %}
+    {{ settings.type_body_font | font_face: font_display: 'swap' }}
+    {{ body_font_bold | font_face: font_display: 'swap' }}
+    {{ body_font_italic | font_face: font_display: 'swap' }}
+    {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+    {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+    {% for scheme in settings.color_schemes -%}
+      {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+      {% if forloop.index == 1 -%}
+        :root,
+      {%- endif %}  
+      .color-{{ scheme.id }} {
+        --color-background: {{ scheme.settings.background }};
+        --color-text: {{ scheme.settings.text }};
+        --color-button:{{ scheme.settings.button }};
+        --color-button_border:{{ scheme.settings.button_border }};
+        --color-button_label:{{ scheme.settings.button_label }};
+        --color-secondary_button_label:{{ scheme.settings.secondary_button_label}};
+        --color-shadow:{{ scheme.settings.shadow}};
+      }
+    {% endfor %}
+    {{ scheme_classes | prepend: 'body' }} {
+      color: var(--color-text);
+      background-color: var(--color-background);
+    } 
+    :root{
+      --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+
+      --font-header-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    }
+  {% endstyle %}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+</head>
+<body>
+  {% sections 'header-group' %}
+	<main>
+		{{ content_for_layout }}
+	</main>
+  <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+	<footer></footer>
+</body>
+</html>

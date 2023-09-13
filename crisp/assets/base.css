@@ -1,0 +1,18 @@
+.bgr-white{
+  background-color: white;
+}
+::placeholder{
+  color: var(--color-text);
+}
+.gradient {
+  background-color: var(--color-background);
+}
+.color-text{
+  color: var(--color-text);
+}
+.btn-primary{
+  background-color: var( --color-button);
+  color: var(--color-button_label);
+  border: 2px solid var(--color-button_border);
+}
+

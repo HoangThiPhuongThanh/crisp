@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "slide":{
+      "type": "slideshow"
+    },
+    "chose_brand":{
+      "type": "chose-brand"
+    }
+  },
+  "order": [
+    "slide",
+    "chose_brand"
+  ]
+}

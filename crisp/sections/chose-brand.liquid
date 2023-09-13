@@ -1,0 +1,54 @@
+{% liquid 
+  assign col-flex = '--w-lg-7:7; --w-xs:6;'
+%}
+<div class="ctnr-fluid">
+  <div class="chose-brand p-relative">
+    <div class="chose-brand__title">
+        <h3 class="h4 tt-up">
+          {{ section.settings.text }}
+        </h2>
+    </div>
+    <div class="chose-brand__image">
+      <div class="row">
+        {% for block in section.blocks %}
+        <div class="clm" style="{{ col-flex }}">
+          {% if block.settings.image != blank %}
+            <a href="" >
+              <img src=" {{ block.settings.image | image_url }}" alt="" class="h-100 w-100 ">
+            </a>
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg h-100 w-100' }}
+          {% endif %} 
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "settings": [
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Heading",
+        "default": "Title"
+      }
+    ],
+    "blocks":[
+      {
+        "type": "image",
+        "name": "Brand",
+        "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+        ]
+      }
+    ]
+  } 
+{% endschema %} 

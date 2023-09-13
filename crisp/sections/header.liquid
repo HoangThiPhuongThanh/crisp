@@ -1,0 +1,97 @@
+{{ 'search.css' | asset_url | stylesheet_tag }}
+<header>
+	<div class=" color-{{ section.settings.color_scheme }} gradient">
+		<div class="header">
+			<div class="ctnr-fluid d-flex between-xs middle-xs">
+				<div class="header__icon-menu">
+					{%  render 'icon-menu' %} 
+				</div>
+				{% render 'header-logo' %}
+				<div class="d-flex ">
+					<div class="header__menu">
+						<nav>
+							<ul class="d-flex main-menu">
+								{% for link in section.settings.menu.links %}
+									<li class="menu-item">
+										<a href="{{ link.url }}" class="color-text healine tt-up menu-link" >{{ link.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</nav>
+					</div>
+					<div class="header__search header__search--desktop close-search">
+						<button class="gradient d-flex color-text border-0">
+							{% render 'icon-search' %}
+							<span  class="color-text d-inline-block healine tt-up">
+								Search
+							</span>
+						</button>
+					</div>
+				</div>
+				<div class="d-flex header-icon middle-xs">
+					<div class="header__account">
+						<ul class="d-flex">
+							<li><a href="" class="color-text healine tt-up">Sign in</a></li>
+							<li><a href="" class="color-text healine tt-up">Create an account</a></li>
+						</ul>
+					</div>
+					<div class="header__icon d-flex middle-xs">
+						<div class="header__icon--search-mobile close-search">
+							<button class="gradient d-flex border-0 color-text">
+								{% render 'icon-search' %}
+							</button>
+						</div>
+						<div class="header__icon--heart">
+							<button class="gradient border-0 color-text">
+								{% render 'icon-heart' %}
+							</button>
+						</div>
+						<div class="header__icon--cart">
+								<button class="btn__cart gradient border-0 d-flex color-text middle-xs">
+									{% render 'icon-cart'%}
+									<div class="ta-left">
+										<span class="d-block color-text">Shopping cart</span>
+										<span class="d-block color-text fw-700">0,00 EUR</span>
+									</div>
+								</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bopup__search search-bar p-absolute middle-xs center-xs d-flex top-0 left-0 right-0 gradient ">
+			<div class="close__search close-search">
+				<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+					<path d="M0.849121 1L21.8491 22M21.8491 1L0.849121 22" stroke="#C4C4C4" stroke-width="2"/>
+				</svg>
+			</div>
+			<div class="ctnr-fluid p-absolute bopup__search--w">
+				{% render 'search'%}
+			</div>
+		</div>
+	</div>
+</header>
+{% schema %}  
+{
+	"name": "Header",
+	"settings": [
+		{ 
+			"type": "image_picker",
+			"id": "logo",
+			"label": "Logo"
+		},
+		{
+			"type": "link_list",
+			"id": "menu",
+			"default": "main-menu",
+			"label": "Menu header"
+		},
+		{ 
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "Color scheme",
+			"default": "background-1"
+		}
+	]
+}
+{% endschema %}

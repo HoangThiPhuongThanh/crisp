@@ -1,0 +1,22 @@
+{
+  "current": "Default",
+  "presets": {  
+    "Default": {
+      "color_schemes": {
+        "background-1": { 
+          "settings": {
+            "background": "#000",
+            "text": "#FFF",
+            "primary_button": "#fff",
+            "secondary_button": "transparent",
+            "primary_button_border": "#fff",
+            "secondary_button_border": "fff",
+            "button_border":"fff"
+          }
+        }
+      },
+      "type_header_font": "oswald_n6",
+      "type_body_font": "roboto_n3"
+    }
+  }
+}

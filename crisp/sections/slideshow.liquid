@@ -1,0 +1,157 @@
+{%- liquid  
+  assign row_slideshow__content = '--gtc-lg:18; --gap-lg:29; --gtc-xs:4; --gap-xs:14;'
+  assign col_slide__content = '--gc-xxl: 3/9; --gr-lg: 1; --gc-lg: 2/8; --gc-xs: 1/5;  --gr-xs: 2;'
+  assign col_slide__image = ' --gr-lg: 1; --gc-lg: 9/19; --gc-xs: 1/5; --gr-xs: 1;'
+  assign col_image__slide__first = ' --gc-xxl: 1/6; --gc-lg: 1/6; --gr-lg: 1;--gr-xs: 1; --gc-xs: 1/4;'
+  assign col_image__slide__second = '--gc-xxl: 5/10; --gc-lg: 5/11; --gr-lg: 1;--gr-xs: 1; --gc-xs: 2/5;'
+  assign row_slide__image = ' --gtc-lg:11; --gtc-xs:4; '
+-%}
+{{  concatrowcol__slide__image }}
+<div class="slideshow color-{{ section.settings.color_scheme }} gradient">
+  <div class="ctnr-fluid-2">
+   
+    <div class="slide p-relative">
+      {% for block in section.blocks %}
+      <div class="p-relative mySlides">
+        <div class="p-absolute top-0 left-0 w-100  h-100" >
+          {% if block.settings.image != blank %}
+            <img src=" {{ block.settings.image | image_url }}" alt="" class="h-100 w-100 ">
+          {%- else -%}
+            {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg h-100 w-100' }}
+          {% endif %} 
+        </div>
+        <div class="p-relative slideshow__content w-100 d-grid middle-xs" style= "{{ row_slideshow__content }}" >
+          <div class="slide__content " style=" {{ col_slide__content }} ">
+            <h2 class="h1 p-relative tt-up color-text">
+              {{ block.settings.text-slide }}
+            </h2>
+            <div class = "slide__btn">
+              <a href="{{ block.settings.link }}" class="p-relative btn d-inline-block btn-primary">
+                {{ block.settings.button_label }}
+              </a>
+            </div>
+          </div>
+          <div class="slide__image d-grid middle-xs center-xs"  style="{{ row_slide__image }} {{ col_slide__image}} ">
+          <div class="d-grid  image__slide" style=" {{  col_image__slide__first}}">
+              {% if block.settings.image_small_1 != blank %}
+                <img src=" {{ block.settings.image_small_1 | image_url }}" alt="" class="img__slide-small">
+              {%- else -%}
+                {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg img__slide-small bgr-white' }}
+              {% endif %} 
+            </div>
+            <div class="d-grid  image__slide"  style="{{ col_image__slide__second }}">
+              {% if block.settings.image_small_2  != blank %}
+                <img src=" {{ block.settings.image_small_2 | image_url }}" alt="" class="img__slide-small">
+              {%- else -%}
+                {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg img__slide-small bgr-white' }}
+              {% endif %} 
+            </div> 
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+        <div class="slideshow__btn d-flex between-xs p-absolute bottom-0 left-0 right-0">
+          <div class="dot-play middle-xs d-flex ">
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="p-relative slideshow__btn-np">
+            <a class="prev" onclick="plusSlides(-1)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                <rect width="50" height="50" fill="black" fill-opacity="0.9"/>
+                <path d="M28.0703 18L20.9995 25.0708L28.0703 32.1417" stroke="white" stroke-width="2"/>
+              </svg>
+            </a>
+            <a class="next" onclick="plusSlides(1)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                <rect x="50" y="50" width="50" height="50" transform="rotate(-180 50 50)" fill="black" fill-opacity="0.9"/>
+                <path d="M21.9297 32L29.0005 24.9292L21.9297 17.8583" stroke="white" stroke-width="2"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      
+    </div>
+  
+  </div>
+</div>
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+      slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+  }
+</script>
+{% schema %}  
+  {
+    "name": "Slideshow",
+    "settings": [
+      { 
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "background-1"
+		  }
+    ],
+    "blocks":[
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "text-slide",
+          "label": "Heading",
+          "default": "Title"
+        },
+        { 
+          "type": "text",
+          "id": "button_label",
+          "default": "Shop now",
+          "label": "Button",
+          "info": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_small_1",
+          "label": "Image small 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_small_2",
+          "label": "Image small 2"
+        }
+        ]
+      }
+    ]
+  }
+{% endschema %}
