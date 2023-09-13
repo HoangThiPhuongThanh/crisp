@@ -1,5 +1,5 @@
 {%- liquid  
-  assign row_slideshow__content = '--gtc-lg:18; --gap-lg:29; --gtc-xs:4; --gap-xs:14;'
+  assign row_slideshow__content = '--gtc-lg:18; --gap-lg:29px; --gtc-xs:4; --gap-xs:14px;'
   assign col_slide__content = '--gc-xxl: 3/9; --gr-lg: 1; --gc-lg: 2/8; --gc-xs: 1/5;  --gr-xs: 2;'
   assign col_slide__image = ' --gr-lg: 1; --gc-lg: 9/19; --gc-xs: 1/5; --gr-xs: 1;'
   assign col_image__slide__first = ' --gc-xxl: 1/6; --gc-lg: 1/6; --gr-lg: 1;--gr-xs: 1; --gc-xs: 1/4;'
@@ -7,7 +7,7 @@
   assign row_slide__image = ' --gtc-lg:11; --gtc-xs:4; '
 -%}
 {{  concatrowcol__slide__image }}
-<div class="slideshow color-{{ section.settings.color_scheme }} gradient">
+<div class="slideshow color-{{ section.settings.color_scheme }}">
   <div class="ctnr-fluid-2">
    
     <div class="slide p-relative">
@@ -36,14 +36,14 @@
               {% if block.settings.image_small_1 != blank %}
                 <img src=" {{ block.settings.image_small_1 | image_url }}" alt="" class="img__slide-small">
               {%- else -%}
-                {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg img__slide-small bgr-white' }}
+                {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg img__slide-small bgr-imgplaceholder' }}
               {% endif %} 
             </div>
             <div class="d-grid  image__slide"  style="{{ col_image__slide__second }}">
               {% if block.settings.image_small_2  != blank %}
                 <img src=" {{ block.settings.image_small_2 | image_url }}" alt="" class="img__slide-small">
               {%- else -%}
-                {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg img__slide-small bgr-white' }}
+                {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg img__slide-small bgr-imgplaceholder' }}
               {% endif %} 
             </div> 
           </div>

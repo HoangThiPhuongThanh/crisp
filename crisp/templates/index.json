@@ -5,10 +5,15 @@
     },
     "chose_brand":{
       "type": "chose-brand"
+    },
+    "section-collage":{
+      "type": "section-collage"
     }
+    
   },
   "order": [
     "slide",
-    "chose_brand"
+    "chose_brand",
+    "section-collage"
   ]
 }

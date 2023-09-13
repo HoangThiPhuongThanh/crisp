@@ -1,10 +1,10 @@
-.bgr-white{
-  background-color: white;
+.bgr-imgplaceholder{
+  background-color: rgb(247, 247, 247);
 }
 ::placeholder{
   color: var(--color-text);
 }
-.gradient {
+.background-color {
   background-color: var(--color-background);
 }
 .color-text{

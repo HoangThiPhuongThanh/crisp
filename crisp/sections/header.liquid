@@ -1,6 +1,6 @@
 {{ 'search.css' | asset_url | stylesheet_tag }}
 <header>
-	<div class=" color-{{ section.settings.color_scheme }} gradient">
+	<div class=" color-{{ section.settings.color_scheme }} ">
 		<div class="header">
 			<div class="ctnr-fluid d-flex between-xs middle-xs">
 				<div class="header__icon-menu">
@@ -20,7 +20,7 @@
 						</nav>
 					</div>
 					<div class="header__search header__search--desktop close-search">
-						<button class="gradient d-flex color-text border-0">
+						<button class="background-color d-flex color-text border-0">
 							{% render 'icon-search' %}
 							<span  class="color-text d-inline-block healine tt-up">
 								Search
@@ -37,17 +37,17 @@
 					</div>
 					<div class="header__icon d-flex middle-xs">
 						<div class="header__icon--search-mobile close-search">
-							<button class="gradient d-flex border-0 color-text">
+							<button class="background-color d-flex border-0 color-text">
 								{% render 'icon-search' %}
 							</button>
 						</div>
 						<div class="header__icon--heart">
-							<button class="gradient border-0 color-text">
+							<button class="background-color border-0 color-text">
 								{% render 'icon-heart' %}
 							</button>
 						</div>
 						<div class="header__icon--cart">
-								<button class="btn__cart gradient border-0 d-flex color-text middle-xs">
+								<button class="btn__cart background-color border-0 d-flex color-text middle-xs">
 									{% render 'icon-cart'%}
 									<div class="ta-left">
 										<span class="d-block color-text">Shopping cart</span>
@@ -59,7 +59,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="bopup__search search-bar p-absolute middle-xs center-xs d-flex top-0 left-0 right-0 gradient ">
+		<div class="bopup__search search-bar p-absolute middle-xs center-xs d-flex top-0 left-0 right-0 background-color ">
 			<div class="close__search close-search">
 				<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
 					<path d="M0.849121 1L21.8491 22M21.8491 1L0.849121 22" stroke="#C4C4C4" stroke-width="2"/>
