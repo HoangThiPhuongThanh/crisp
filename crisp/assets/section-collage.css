@@ -1,3 +1,28 @@
+.st-collage{
+  padding-top: 2px;
+}
 .collage__content{
-  padding: 82px 0px;
+  padding: 18px 0px;
+  
+}
+.collage__content:nth-child(2){
+  padding: 127px 0px 34px 0px;
+}
+.collage__button {
+  padding-top: 8px;
+}
+.collage__des{
+  font-size: 10px; 
+}
+.collage__content .card-body{
+  width: 55%;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.collage__content .card-body{
+  padding: 0px 27px;
 }

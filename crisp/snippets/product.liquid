@@ -1,0 +1,26 @@
+{% liquid
+  assign col = '--w-xl:3; --w-xs:6'
+  assign products = collections.all.products
+%} 
+<div class="row">
+  {% for products in products %}
+  <div class="clm" style="{{ col }}">
+    <div class="card">
+      <a href="">
+        <img class="card-img-top w-100" src="{{ products.featured_image | image_url }}" alt="Card image cap">
+        </a>
+      <div class="card-body">
+        <small>{{ product.collections.title }}</small>
+        <span class="card-text"></span>
+        <a href="">
+          <h4 class="card-title"> {{ products.title }}</h4>
+        </a>
+        <div class="card-price">
+          <span class="price-new">139,00 EUR</span>
+          <span class="price-old">159,00 EUR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

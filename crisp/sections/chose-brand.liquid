@@ -1,5 +1,5 @@
 {% liquid 
-  assign col-flex = '--w-xl-7:7; --w-lg:3; --w-md:4; --w-xs:6;'
+  assign col-flex = '--w-xl:2;  --w-xs:6;'
 %}
 <div class=" color-{{ section.settings.color_scheme }}">
   <div class="ctnr-fluid">
@@ -18,7 +18,7 @@
                 <img src=" {{ block.settings.image | image_url }}" alt="" class="h-100 w-100 ">
               </a>
             {%- else -%}
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg brand__image h-100 w-100 brand__border' }}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg bgr-imgplaceholder brand__image h-100 w-100 brand__border' }}
             {% endif %} 
           </div>
           {% endfor %}

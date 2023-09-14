@@ -1,5 +1,15 @@
 .bgr-imgplaceholder{
   background-color: rgb(247, 247, 247);
+  position: relative;
+}
+.bgr-imgplaceholder::after{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.062);
+  content: "";
+  top:0;
+  left:0;
+  right: 0;
+  bottom:0;
 }
 ::placeholder{
   color: var(--color-text);
@@ -9,6 +19,9 @@
 }
 .color-text{
   color: var(--color-text);
+}
+.color-text--2{
+  color: var(--color-background);
 }
 .btn-primary{
   background-color: var( --color-button);

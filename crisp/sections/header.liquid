@@ -4,20 +4,36 @@
 		<div class="header">
 			<div class="ctnr-fluid d-flex between-xs middle-xs">
 				<div class="header__icon-menu">
-					{%  render 'icon-menu' %} 
+					<div class="open-mb">
+						<div class="open-mb open-menu-mb">
+							{%  render 'icon-menu' %}
+						</div>
+						<div class=" close-menu-mb">
+							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+								<path d="M1 1L16 16M16 1L1 16" stroke="var( --color-text)" stroke-width="2.4"/>
+							</svg>
+						</div>
+					</div>
+					<div class="bopup-mh p-absolute right-0 left-0">
+						<div class="background-color ctnr-fluid header-mobile">
+							<div class="bopup-mh__search">
+								<form action="" class="p-relative">
+									<div class="form-group">
+										<input type="text" class="form-control form__search-mb w-100" id="" placeholder= "Type something...">
+									</div>
+									<button type="submit" class="btn btn__search-mb p-absolute right-0 top-0 h-100">Find</button>
+								</form>
+							</div>
+							<div class="bopup-mh__search">
+								{% render 'menu-mobile' %}
+							</div>
+						</div>
+					</div>
 				</div>
 				{% render 'header-logo' %}
 				<div class="d-flex ">
 					<div class="header__menu">
-						<nav>
-							<ul class="d-flex main-menu">
-								{% for link in section.settings.menu.links %}
-									<li class="menu-item">
-										<a href="{{ link.url }}" class="color-text healine tt-up menu-link" >{{ link.title }}</a>
-									</li>
-								{% endfor %}
-							</ul>
-						</nav>
+						{% render 'menu'%}
 					</div>
 					<div class="header__search header__search--desktop close-search">
 						<button class="background-color d-flex color-text border-0">
@@ -71,6 +87,34 @@
 		</div>
 	</div>
 </header>
+<script>
+	var clickmenu = document.querySelectorAll(".click-menu")
+  console.log(clickmenu)
+	clickmenu.forEach(function(item) {
+  item.addEventListener('click', function(event) {
+		item.classList.toggle('open-menu-mobile');
+  });
+});
+</script>
+<script>
+	const nav = document.querySelector('.open-mb');
+const menu = document.querySelector('.bopup-mh');
+console.log(nav)
+let isMenuOpen = false;
+nav.addEventListener('click', e => {
+  e.preventDefault();
+  isMenuOpen = !isMenuOpen;
+  // nav.setAttribute('aria-expanded', String(isMenuOpen));
+  // menu.hidden = !isMenuOpen;
+  if (isMenuOpen) {
+      menu.classList.add('menu-show');
+      nav.classList.add('show-icon-menu');
+    } else {
+      menu.classList.remove('menu-show');
+      nav.classList.remove('show-icon-menu');
+    }
+})
+</script>
 {% schema %}  
 {
 	"name": "Header",
@@ -91,6 +135,11 @@
 			"id": "color_scheme",
 			"label": "Color scheme",
 			"default": "background-1"
+		},
+		{ 
+			"type": "image_picker",
+			"id": "img_menu",
+			"label": "Image menu cấp 2"
 		}
 	]
 }

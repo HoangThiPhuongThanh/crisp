@@ -8,12 +8,16 @@
     },
     "section-collage":{
       "type": "section-collage"
+    },
+    "filter-product":{
+      "type": "filter-product"
     }
     
   },
   "order": [
     "slide",
     "chose_brand",
-    "section-collage"
+    "section-collage",
+    "filter-product"
   ]
 }

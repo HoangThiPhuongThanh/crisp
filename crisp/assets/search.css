@@ -1,5 +1,6 @@
 .bopup__search{
   min-height: 115px;
+  z-index: 5;
 }
 .bopup__search--w{
   width:100%;

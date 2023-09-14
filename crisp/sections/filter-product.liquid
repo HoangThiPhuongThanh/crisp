@@ -1,0 +1,30 @@
+{% liquid 
+  assign grid_template_columns-rows = '--gtc-lg: 18; --gap-lg: 29px;--gtc-xs:4; --gap-xs: 14px '
+  assign grid_template_columns-first = '--gc-lg:1/5; --gr-lg:1'
+  assign grid_template_columns-second = '--gc-lg:5/19; --gr-lg:1'
+%}
+<div class="color-{{ section.settings.color_scheme }}">
+  <div class="ctnr-fluid">
+    <div class="filter-product d-grid" style="{{ grid_template_columns-rows }}">
+      <div class="filter" style="{{ grid_template_columns-first }}">
+       {% render 'filter-wear' %}
+      </div>
+      <div class="product" style="{{ grid_template_columns-second }}">
+      {% render 'product' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}  
+  {
+    "name": "Filter product",
+    "settings": [
+      { 
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "background-1"
+      }
+    ]
+  }
+  {% endschema %}
